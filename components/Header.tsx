@@ -6,7 +6,7 @@ export default function Header() {
     <header>
       <nav className="container mx-auto">
         <div className="logo-wrapper">
-          <Link href={"/newpagetwo"}>
+          <Link href={"/"}>
             <p className="font-bold text-xl">Logo</p>
           </Link>
         </div>
