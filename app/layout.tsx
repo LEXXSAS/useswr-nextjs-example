@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Providers from "@/redux/Provider";
 import Footer from "@/components/Footer";
 import { SearchPokemon } from "@/components/SearchPokemon";
+import { SelectComponent } from "@/components/SelectComponent";
+import SearchAndSelect from "@/components/SearchAndSelect";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -29,7 +31,7 @@ export default function RootLayout({
         <Header />
         <div className="container mx-auto children-wrapper">
           <Providers>
-            <div className="search-container"><SearchPokemon /></div>
+            <SearchAndSelect />
             <div>{children}</div>
           </Providers>
         </div>

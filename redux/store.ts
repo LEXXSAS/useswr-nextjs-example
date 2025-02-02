@@ -5,4 +5,9 @@ export const store = configureStore({
   reducer: {
     pokemons: pokemonSlice
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      immutableCheck: false,
+      serializableCheck: false,
+    }),
 });

@@ -2,9 +2,7 @@ export const getDatasBySearch = async (search: string) => {
   const response = await fetch(
     `/api/pokemons?q=${search}`
   );
-
   if (!response.ok) throw new Error("Unable to fetch posts.");
-
   return response.json();
 };
 
@@ -21,4 +19,17 @@ export async function fetchAllDataWithPokemonImage() {
     }
   );
   return data;
+}
+
+export async function fetchAllPokemonDetails() {
+  const data = await fetchAllDataWithPokemonImage();
+  const alldata = await Promise.all(
+    data.map(async(item: { name: string; url: string, image: string }, index: any) => {
+      const pokemonIndex = index + 1;
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonIndex}`);
+      const details = await res.json();
+      return { ...item, details };
+    })
+  )
+  return alldata;
 }
